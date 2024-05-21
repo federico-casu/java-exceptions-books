@@ -1,5 +1,8 @@
 package org.lessons.java.exeptionsBooks;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Book {
 
     // ATTRIBUTES
@@ -71,5 +74,12 @@ public class Book {
         System.out.print("\nAutore: " + this.author);
         System.out.print("\nEditore: " + this.editor);
         System.out.println();
+    }
+
+    public void printBookInFile(FileWriter f) throws IOException {
+        f.write("\nTitolo: " + this.title);
+        f.write("\nNumero di pagine: " + this.pages);
+        f.write("\nAutore: " + this.author);
+        f.write("\nEditore: " + this.editor + "\n");
     }
 }

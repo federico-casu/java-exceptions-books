@@ -1,5 +1,9 @@
 package org.lessons.java.exeptionsBooks;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Library {
@@ -47,6 +51,42 @@ public class Library {
         for (int i = 0; i < library.length; i++) {
             System.out.print("\nLibro n. " + (i+1));
             library[i].printBook();
+        }
+
+        File libraryFile = new File("./resources/library.txt");
+        FileWriter bookWriter = null;
+        try {
+            bookWriter = new FileWriter(libraryFile);
+            for (int i = 0; i < library.length; i++) {
+                library[i].printBookInFile(bookWriter);
+            }
+            bookWriter.close();
+        } catch (IOException luisa) {
+            System.out.println("Unable write on the file");
+        } finally {
+            try {
+                if (bookWriter != null) {
+                    bookWriter.close();
+                }
+            } catch (IOException luisa) {
+                System.out.println("Unable to close filewriter");
+            }
+        }
+
+        Scanner libraryReader = null;
+        try {
+            libraryReader = new Scanner(libraryFile);
+            System.out.print("\n********* LETTURA DA FILE *********");
+            while (libraryReader.hasNextLine()) {
+                String line = libraryReader.nextLine();
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException luisa) {
+            System.out.println("Unable to read the file");
+        } finally {
+            if (libraryReader != null) {
+                libraryReader.close();
+            }
         }
 
         scanner.close();

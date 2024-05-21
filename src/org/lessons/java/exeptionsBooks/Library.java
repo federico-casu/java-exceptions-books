@@ -39,6 +39,7 @@ public class Library {
 
                 } catch (IllegalArgumentException luisa) {
                     System.out.println(luisa.getMessage());
+                    System.out.println("Unable to save the book");
                 }
             }
         }

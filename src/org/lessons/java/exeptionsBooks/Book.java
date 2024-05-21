@@ -9,7 +9,7 @@ public class Book {
     private String editor;
 
     // CONSTRUCTORS
-    public Book(String title, int pages, String author, String editor) throws IllegalArgumentException, NumberFormatException {
+    public Book(String title, int pages, String author, String editor) throws IllegalArgumentException {
         checkString(title, "title");
         this.title = title;
         checkNumber(pages, "number of pages");

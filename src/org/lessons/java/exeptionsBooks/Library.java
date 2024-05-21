@@ -1,6 +1,5 @@
 package org.lessons.java.exeptionsBooks;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Library {
@@ -24,21 +23,29 @@ public class Library {
             String title, author, editor;
             int pages;
 
-            try {
-                System.out.print("\nLibro n. " + (i+1));
-                System.out.print("\nTitolo: ");
-                title = scanner.nextLine();
-                System.out.print("\nNumero pagine: ");
-                pages = Integer.parseInt(scanner.nextLine());
-                System.out.print("\nAutore: ");
-                author = scanner.nextLine();
-                System.out.print("\nEditore: ");
-                editor = scanner.nextLine();
+            while (library[i] == null) {
+                try {
+                    System.out.print("\nLibro n. " + (i+1));
+                    System.out.print("\nTitolo: ");
+                    title = scanner.nextLine();
+                    System.out.print("Numero pagine: ");
+                    pages = Integer.parseInt(scanner.nextLine());
+                    System.out.print("Autore: ");
+                    author = scanner.nextLine();
+                    System.out.print("Editore: ");
+                    editor = scanner.nextLine();
 
-                library[i] = new Book(title, pages, author, editor);
-            } catch (IllegalArgumentException luisa) {
-                System.out.println(luisa.getMessage());
+                    library[i] = new Book(title, pages, author, editor);
+
+                } catch (IllegalArgumentException luisa) {
+                    System.out.println(luisa.getMessage());
+                }
             }
+        }
+
+        for (int i = 0; i < library.length; i++) {
+            System.out.print("\nLibro n. " + (i+1));
+            library[i].printBook();
         }
 
         scanner.close();
